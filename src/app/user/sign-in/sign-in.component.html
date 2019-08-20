@@ -1,0 +1,56 @@
+<mat-card class="mat-elevation-z4">
+  <mat-card-title>
+    Sign-in
+  </mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="authForm" (submit)="onSubmit($event)" novalidate>
+      <ui-row [justify]="'right'">
+        <ui-col [sm]="24">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="Login"
+              formControlName="login"
+            />
+          </mat-form-field>
+          <div class="error" *ngIf="login.invalid && login.touched">
+            {{
+              login.hasError('required')
+                ? 'Email is required'
+                : 'Email must be a valid email address'
+            }}
+          </div>
+        </ui-col>
+        <ui-col [sm]="24" [md]="24">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="Password"
+              type="password"
+              formControlName="password"
+            />
+          </mat-form-field>
+
+          <div class="error" *ngIf="password.invalid && password.touched">
+            Password is required
+          </div>
+        </ui-col>
+
+        <ui-col>
+          <a routerLink="../register" routerLinkActive="active">Register</a>
+          <button
+            [disabled]="authForm.invalid"
+            type="submit"
+            mat-raised-button
+            color="primary"
+          >
+            Sign-in
+          </button>
+        </ui-col>
+      </ui-row>
+    </form>
+  </mat-card-content>
+</mat-card>

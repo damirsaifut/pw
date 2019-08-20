@@ -1,0 +1,70 @@
+@--columns: 24;
+
+:host {
+  display: block;
+  flex: 0 0 auto;
+  width: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+
+  &.align {
+    &-top {
+      align-self: flex-start;
+    }
+    &-middle {
+      align-self: center;
+    }
+    &-bottom {
+      align-self: flex-end;
+    }
+    &-stretch {
+      align-self: stretch;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .generate-columns(xs);
+  }
+  @media screen and (min-width: 768px) {
+    .generate-columns(sm);
+  }
+  @media screen and (min-width: 992px) {
+    .generate-columns(md);
+  }
+  @media screen and (min-width: 1170px) {
+    .generate-columns(lg);
+  }
+  @media screen and (min-width: 1440px) {
+    .generate-columns(xl);
+  }
+}
+
+.generate-columns(@prefix) {
+  &.@{prefix}-none {
+    display: none;
+  }
+
+  &.@{prefix}-min {
+    display: block;
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  &.@{prefix}-max {
+    display: block;
+    flex: 1;
+    width: auto;
+  }
+
+  .generate-grid(@prefix);
+}
+
+.generate-grid(@prefix, @i: 1) when (@i =< @--columns) {
+  &.@{prefix}-@{i} {
+    display: block;
+    flex: 0 0 ((100% / @--columns) * @i);
+    width: ((100% / @--columns) * @i);
+  }
+
+  .generate-grid(@prefix, (@i + 1));
+}

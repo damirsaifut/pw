@@ -1,0 +1,43 @@
+<h3 mat-dialog-title>Create a transaction</h3>
+<div mat-dialog-content [formGroup]="form">
+  <mat-form-field style="position: relative !important">
+    <input
+      matInput
+      type="text"
+      formControlName="queryField"
+      id="keyword"
+      placeholder="Username"
+      [matAutocomplete]="auto"
+    />
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of results" [value]="option.name">
+        {{ option.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="error" *ngIf="queryField.invalid && queryField.touched">
+    Username is required
+  </div>
+
+  <mat-form-field>
+    <input matInput type="text" formControlName="amount" placeholder="Amount" />
+  </mat-form-field>
+
+  <div class="error" *ngIf="amount.invalid && amount.touched">
+    {{ amount.hasError('required') ? 'Amount is required' : 'Invalid balance' }}
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button
+    mat-raised-button
+    [color]="'primary'"
+    [disabled]="form.invalid"
+    [mat-dialog-close]="true"
+    (click)="onCreate()"
+  >
+    Create
+  </button>
+</div>

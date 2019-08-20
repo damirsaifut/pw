@@ -1,0 +1,5 @@
+<img *ngIf="extension !== 'svg'; else processing" [src]="src" />
+
+<ng-template #processing>
+  <span>...</span>
+</ng-template>

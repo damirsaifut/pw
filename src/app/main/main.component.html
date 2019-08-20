@@ -1,0 +1,53 @@
+<mat-sidenav-container class="example-sidenav-container">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="example-sidenav"
+    [fixedInViewport]="true"
+    [fixedTopGap]="true"
+    [fixedBottomGap]="true"
+  >
+    <div class="logo">
+      <div class="name">
+        Parrot <ui-icon [src]="'assets/icon/parrot.svg'"></ui-icon> Wings
+      </div>
+    </div>
+
+    <mat-accordion *ngIf="userInfo" class="panel">
+      <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+          <mat-panel-title class="title">
+            <ui-icon
+              [src]="'assets/icon/user.svg'"
+              style="width: 2rem; height: 2rem;"
+            ></ui-icon>
+            <div class="title_info_user">
+              {{ userInfo.name }}
+              <div style="font-size: 0.8rem;">
+                Balance: {{ userInfo.balance }}
+              </div>
+            </div>
+          </mat-panel-title>
+          <mat-panel-description> </mat-panel-description>
+        </mat-expansion-panel-header>
+        <button class="logout" (click)="logout()">Выйти</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <nav class="menu">
+      <ul>
+        <li *ngFor="let item of navMenu">
+          <a [routerLink]="[item.path]" routerLinkActive="active">
+            <ui-icon [src]="'assets/icon/' + item.icon + '.svg'"></ui-icon>
+            {{ item.name }}</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-loading></app-loading>

@@ -1,0 +1,168 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-light: #eaedf3;
+  --color-primary: #3f51b5;
+}
+
+.mat-drawer-container {
+  background: none !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.red-snackbar {
+  background: red;
+  color: var(--color-light);
+}
+
+.blue-snackbar {
+  background: var(--color-primary);
+  color: var(--color-light);
+}
+
+.panel {
+  & * > {
+    background: transparent;
+    border: none;
+    color: var(--color-light);
+  }
+
+  & .title {
+    font-weight: 400 !important;
+    letter-spacing: 0.05rem;
+    align-items: center;
+    height: 2rem;
+    svg {
+      margin-right: 0.25rem;
+    }
+  }
+}
+
+.mat-expansion-indicator::after,
+.mat-expansion-panel-header-description {
+  color: var(--color-light);
+}
+
+.mat-expansion-panel-header {
+  padding: 0 1rem !important;
+}
+
+mat-expansion-panel {
+  mat-expansion-panel-header {
+    height: auto !important;
+  }
+}
+
+.mat-expansion-panel-body {
+  padding: 0 1rem !important;
+  button {
+    &.logout {
+      margin-top: 1rem;
+      padding: 0;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.logo {
+  height: 4rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--color-light);
+  margin-bottom: 1rem;
+  & .name {
+    color: var(--color-light);
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+  }
+  svg {
+    fill: white;
+  }
+}
+
+.menu {
+  margin-top: 1rem;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    li {
+      height: auto;
+      a {
+        display: flex;
+        align-items: center;
+        color: white;
+        padding: 0.8rem 1rem;
+        text-decoration: none;
+        svg {
+          margin-right: 0.5rem;
+        }
+        &:hover {
+          border-left: 5px solid #ffffff50;
+        }
+        &.active {
+          background-color: #354052;
+          border-left: 5px solid var(--color-primary);
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  max-height: 100%;
+
+  & .mat-dialog-container {
+    padding: 0 2rem !important;
+    overflow: hidden;
+  }
+  & .mat-dialog-title {
+    border-bottom: 1px solid rgba(40, 40, 40, 0.5);
+    margin: 0 -2rem;
+    padding: 0.5rem 1.5rem;
+  }
+  & .mat-dialog-content {
+    max-height: 100%;
+    margin: 0 -2rem !important;
+    padding: 0.5rem 1.5rem !important;
+    & .mat-form-field {
+      width: 100%;
+    }
+  }
+  & .mat-dialog-actions {
+    overflow: hidden;
+    margin: 0 -2rem !important;
+    padding: 0.25rem 1.5rem !important;
+    border-top: 1px solid rgba(40, 40, 40, 0.5);
+  }
+}
+
+.error {
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+table {
+  width: 100%;
+}
+
+a,
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
